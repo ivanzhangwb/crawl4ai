@@ -2001,11 +2001,7 @@ def normalize_url(href, base_url):
     if not parsed_base.scheme or not parsed_base.netloc:
         raise ValueError(f"Invalid base URL format: {base_url}")
 
-    # Ensure base_url ends with a trailing slash if it's a directory path
-    if not base_url.endswith('/'):
-        base_url = base_url + '/'
-
-    # Use urljoin to handle all cases
+    # Use urljoin directly without forcibly adding a trailing slash
     normalized = urljoin(base_url, href.strip())
     return normalized
 
